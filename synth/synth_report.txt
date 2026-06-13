@@ -1,0 +1,473 @@
+Release 14.7 - xst P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> 
+Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.02 secs
+ 
+--> 
+Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.02 secs
+ 
+--> 
+Reading design: mini_cpu_top.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "mini_cpu_top.prj"
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "mini_cpu_top"
+Output Format                      : NGC
+Target Device                      : xc6slx9-2-csg324
+
+---- Source Options
+Top Module Name                    : mini_cpu_top
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Shift Register Extraction          : YES
+ROM Style                          : Auto
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Shift Register Minimum Size        : 2
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : Auto
+Reduce Control Sets                : Auto
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 16
+Register Duplication               : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Parsing VHDL file "/home/ise/MPRPROJECT2BNEW/control_unit.vhd" into library work
+Parsing entity <control_unit>.
+Parsing architecture <Behavioral> of entity <control_unit>.
+Parsing VHDL file "/home/ise/MPRPROJECT2BNEW/mini_cpu_top.vhd" into library work
+Parsing entity <mini_cpu_top>.
+Parsing architecture <Structural> of entity <mini_cpu_top>.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating entity <mini_cpu_top> (architecture <Structural>) from library <work>.
+
+Elaborating entity <control_unit> (architecture <Behavioral>) from library <work>.
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <mini_cpu_top>.
+    Related source file is "/home/ise/MPRPROJECT2BNEW/mini_cpu_top.vhd".
+    Found 4-bit register for signal <pc>.
+    Found 8-bit register for signal <reg_a>.
+    Found 8-bit register for signal <instr>.
+    Found 27-bit register for signal <clk_div_count>.
+    Found 1-bit register for signal <slow_en>.
+    Found 27-bit adder for signal <clk_div_count[26]_GND_4_o_add_3_OUT> created at line 54.
+    Found 8-bit adder for signal <reg_a[7]_GND_4_o_add_8_OUT> created at line 97.
+    Found 4-bit adder for signal <pc[3]_GND_4_o_add_12_OUT> created at line 1241.
+    Found 8-bit subtractor for signal <GND_4_o_GND_4_o_sub_10_OUT<7:0>> created at line 100.
+    Found 16x8-bit Read Only RAM for signal <pc[3]_GND_4_o_wide_mux_6_OUT>
+    Summary:
+	inferred   1 RAM(s).
+	inferred   3 Adder/Subtractor(s).
+	inferred  48 D-type flip-flop(s).
+	inferred   3 Multiplexer(s).
+Unit <mini_cpu_top> synthesized.
+
+Synthesizing Unit <control_unit>.
+    Related source file is "/home/ise/MPRPROJECT2BNEW/control_unit.vhd".
+    Found 2-bit register for signal <state>.
+    Found finite state machine <FSM_0> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 4                                              |
+    | Transitions        | 8                                              |
+    | Inputs             | 1                                              |
+    | Outputs            | 3                                              |
+    | Clock              | clk (rising_edge)                              |
+    | Reset              | reset (negative)                               |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | st_fetch                                       |
+    | Power Up State     | st_fetch                                       |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Summary:
+	inferred   4 Multiplexer(s).
+	inferred   1 Finite State Machine(s).
+Unit <control_unit> synthesized.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 1
+ 16x8-bit single-port Read Only RAM                    : 1
+# Adders/Subtractors                                   : 3
+ 27-bit adder                                          : 1
+ 4-bit adder                                           : 1
+ 8-bit addsub                                          : 1
+# Registers                                            : 5
+ 1-bit register                                        : 1
+ 27-bit register                                       : 1
+ 4-bit register                                        : 1
+ 8-bit register                                        : 2
+# Multiplexers                                         : 7
+ 1-bit 2-to-1 multiplexer                              : 3
+ 2-bit 2-to-1 multiplexer                              : 1
+ 4-bit 2-to-1 multiplexer                              : 1
+ 8-bit 2-to-1 multiplexer                              : 2
+# FSMs                                                 : 1
+
+=========================================================================
+INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+
+Synthesizing (advanced) Unit <mini_cpu_top>.
+The following registers are absorbed into counter <pc>: 1 register on signal <pc>.
+The following registers are absorbed into counter <clk_div_count>: 1 register on signal <clk_div_count>.
+INFO:Xst:3217 - HDL ADVISOR - Register <instr> currently described with an asynchronous reset, could be combined with distributed RAM <Mram_pc[3]_GND_4_o_wide_mux_6_OUT> for implementation on block RAM resources if you made this reset synchronous instead.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 16-word x 8-bit                     |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <led_pc>        |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+Unit <mini_cpu_top> synthesized (advanced).
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 1
+ 16x8-bit single-port distributed Read Only RAM        : 1
+# Adders/Subtractors                                   : 1
+ 8-bit addsub                                          : 1
+# Counters                                             : 2
+ 27-bit up counter                                     : 1
+ 4-bit up counter                                      : 1
+# Registers                                            : 17
+ Flip-Flops                                            : 17
+# Multiplexers                                         : 6
+ 1-bit 2-to-1 multiplexer                              : 3
+ 2-bit 2-to-1 multiplexer                              : 1
+ 8-bit 2-to-1 multiplexer                              : 2
+# FSMs                                                 : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <CPU_BRAIN/FSM_0> on signal <state[1:2]> with user encoding.
+--------------------------
+ State        | Encoding
+--------------------------
+ st_fetch     | 00
+ st_decode    | 01
+ st_execute   | 10
+ st_writeback | 11
+--------------------------
+WARNING:Xst:1293 - FF/Latch <instr_3> has a constant value of 0 in block <mini_cpu_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <instr_7> has a constant value of 0 in block <mini_cpu_top>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:2261 - The FF/Latch <instr_1> in Unit <mini_cpu_top> is equivalent to the following FF/Latch, which will be removed : <instr_5> 
+
+Optimizing unit <mini_cpu_top> ...
+
+Optimizing unit <control_unit> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block mini_cpu_top, actual ratio is 1.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 47
+ Flip-Flops                                            : 47
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : mini_cpu_top.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 134
+#      GND                         : 1
+#      INV                         : 2
+#      LUT1                        : 26
+#      LUT2                        : 2
+#      LUT3                        : 6
+#      LUT4                        : 8
+#      LUT5                        : 17
+#      LUT6                        : 17
+#      MUXCY                       : 26
+#      MUXF7                       : 1
+#      VCC                         : 1
+#      XORCY                       : 27
+# FlipFlops/Latches                : 47
+#      FD                          : 1
+#      FDC                         : 2
+#      FDCE                        : 17
+#      FDR                         : 27
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 13
+#      IBUF                        : 1
+#      OBUF                        : 12
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 6slx9csg324-2 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:              47  out of  11440     0%  
+ Number of Slice LUTs:                   78  out of   5720     1%  
+    Number used as Logic:                78  out of   5720     1%  
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:     78
+   Number with an unused Flip Flop:      31  out of     78    39%  
+   Number with an unused LUT:             0  out of     78     0%  
+   Number of fully used LUT-FF pairs:    47  out of     78    60%  
+   Number of unique control sets:         6
+
+IO Utilization: 
+ Number of IOs:                          14
+ Number of bonded IOBs:                  14  out of    200     7%  
+
+Specific Feature Utilization:
+ Number of BUFG/BUFGCTRLs:                1  out of     16     6%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk_fpga                           | BUFGP                  | 47    |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -2
+
+   Minimum period: 5.767ns (Maximum Frequency: 173.400MHz)
+   Minimum input arrival time before clock: 3.983ns
+   Maximum output required time after clock: 4.444ns
+   Maximum combinational path delay: No path found
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk_fpga'
+  Clock period: 5.767ns (frequency: 173.400MHz)
+  Total number of paths / destination ports: 1833 / 91
+-------------------------------------------------------------------------
+Delay:               5.767ns (Levels of Logic = 4)
+  Source:            instr_4 (FF)
+  Destination:       reg_a_6 (FF)
+  Source Clock:      clk_fpga rising
+  Destination Clock: clk_fpga rising
+
+  Data Path: instr_4 to reg_a_6
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDCE:C->Q             9   0.525   1.406  instr_4 (instr_4)
+     LUT5:I0->O           10   0.254   1.116  CPU_BRAIN/Mmux_alu_sel21 (s_alu_sel<1>)
+     LUT4:I2->O            4   0.250   0.912  Mmux_s_alu_sel[1]_reg_a[7]_wide_mux_10_OUT_rs_lut<2>1 (Mmux_s_alu_sel[1]_reg_a[7]_wide_mux_10_OUT_rs_lut<2>)
+     LUT6:I4->O            2   0.250   0.726  Mmux_s_alu_sel[1]_reg_a[7]_wide_mux_10_OUT_rs_xor<7>111_SW1 (N8)
+     LUT6:I5->O            1   0.254   0.000  Mmux_s_alu_sel[1]_reg_a[7]_wide_mux_10_OUT_rs_xor<6>11 (s_alu_sel[1]_reg_a[7]_wide_mux_10_OUT<6>)
+     FDCE:D                    0.074          reg_a_6
+    ----------------------------------------
+    Total                      5.767ns (1.607ns logic, 4.160ns route)
+                                       (27.9% logic, 72.1% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk_fpga'
+  Total number of paths / destination ports: 19 / 19
+-------------------------------------------------------------------------
+Offset:              3.983ns (Levels of Logic = 2)
+  Source:            btn_reset (PAD)
+  Destination:       instr_0 (FF)
+  Destination Clock: clk_fpga rising
+
+  Data Path: btn_reset to instr_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             1   1.328   0.681  btn_reset_IBUF (btn_reset_IBUF)
+     INV:I->O             19   0.255   1.260  btn_reset_inv1_INV_0 (CPU_BRAIN/reset_inv)
+     FDC:CLR                   0.459          CPU_BRAIN/state_FSM_FFd1
+    ----------------------------------------
+    Total                      3.983ns (2.042ns logic, 1.941ns route)
+                                       (51.3% logic, 48.7% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk_fpga'
+  Total number of paths / destination ports: 12 / 12
+-------------------------------------------------------------------------
+Offset:              4.444ns (Levels of Logic = 1)
+  Source:            pc_0 (FF)
+  Destination:       led_pc<0> (PAD)
+  Source Clock:      clk_fpga rising
+
+  Data Path: pc_0 to led_pc<0>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDCE:C->Q            10   0.525   1.007  pc_0 (pc_0)
+     OBUF:I->O                 2.912          led_pc_0_OBUF (led_pc<0>)
+    ----------------------------------------
+    Total                      4.444ns (3.437ns logic, 1.007ns route)
+                                       (77.3% logic, 22.7% route)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+Clock to Setup on destination clock clk_fpga
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk_fpga       |    5.767|         |         |         |
+---------------+---------+---------+---------+---------+
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 5.00 secs
+Total CPU time to Xst completion: 1.56 secs
+ 
+--> 
+
+
+Total memory usage is 485624 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    2 (   0 filtered)
+Number of infos    :    3 (   0 filtered)

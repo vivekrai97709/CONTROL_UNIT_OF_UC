@@ -67,25 +67,6 @@ stateDiagram-v2
 
 This creates an infinite loop that cycles Reg A through 8 → 6 → 9 → 7..., useful for verifying ALU and branch logic together.
 
----
-
-## Simulation Waveforms
-
-Verified with an ISim testbench: 100ns reset followed by standard clock cycles.
-
-**Full execution cycle (Fetch → Decode → Execute → Writeback):**
-
-![Waveform - Full Cycle](waveform/full_cycle.png)
-*Add your screenshot here: shows clk, rst, PC, IR, state, and ACC across one full FSM cycle*
-
-**ALU operation detail (ADD/SUB):**
-
-![Waveform - ALU](waveform/alu_operation.png)
-*Add your screenshot here: zoomed-in view of ACC value changing during ADD 3 → SUB 2*
-
-> Place your screenshots in a `waveform/` folder and update the paths above to match your filenames.
-
----
 
 ## Synthesis Results
 
